@@ -23,6 +23,7 @@ public class Point {
     public boolean isIntersect ( double px1 , double py1 , double px2 , double py2 , double px3 , double py3 , double px4 ,
                                  double py4 )
     {
+        //思想:根据两直线相交，其中一条为直线，另一条为线段，判断线段的两个端点，分别在直线的上面和下面即可判断相交。
         boolean flag = false;
         double d = (px2 - px1) * (py4 - py3) - (py2 - py1) * (px4 - px3);
         if ( d != 0 )
@@ -107,14 +108,14 @@ public class Point {
             if ( isPointOnLine(cx1, cy1, linePoint1x, linePoint1y, linePoint2x, linePoint2y) )
             {
                 //第二个点在第一个的下方,靠近赤道纬度为零(最小纬度)
-                if ( cy1 > cy2 )
+                if ( cy1 > cy2 )  //避免重复计算同一个点，造成count++两遍，即：cy1,cy2  cy2,cy3的情况
                     count++;
             }
             //第二个点是否在以目标点为基础衍生的平行纬度线
             else if ( isPointOnLine(cx2, cy2, linePoint1x, linePoint1y, linePoint2x, linePoint2y) )
             {
                 //第二个点在第一个的上方,靠近极点(南极或北极)纬度为90(最大纬度)
-                if ( cy2 > cy1 )
+                if ( cy2 > cy1 )//避免重复计算同一个点，造成count++两遍，即：cy1,cy2  cy2,cy3的情况
                     count++;
             }
             //由两点组成的线段是否和以目标点为基础衍生的平行纬度线相交
