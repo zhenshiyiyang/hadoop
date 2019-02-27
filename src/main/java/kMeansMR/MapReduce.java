@@ -82,7 +82,6 @@ public class MapReduce {
         protected void reduce(IntWritable key, Iterable<Text> value,Context context)
                 throws IOException, InterruptedException {
             ArrayList<ArrayList<Double>> filedsList = new ArrayList<ArrayList<Double>>();
-
             //依次读取记录集，每行为一个ArrayList<Double>
             for(Iterator<Text> it =value.iterator();it.hasNext();){
                 ArrayList<Double> tempList = Utils.textToArray(it.next());

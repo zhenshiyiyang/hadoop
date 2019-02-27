@@ -60,4 +60,10 @@ public class Area {
         buffer.append("(").append(px).append(",").append(py).append(")");
         return buffer.toString();
     }
+    public boolean equals(Area area) {
+        if (area.px==this.px && area.py==this.py) {
+            return true;
+        }
+        return false;
+    }
 }
